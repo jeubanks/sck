@@ -1,0 +1,8 @@
+Title: Payment Successful! 
+----
+
+Text: A successful charge was created. You can specify whether SCK just updates the page with text to say the charge was successful, or redirect to another page. 
+
+If a payment is declined, this is reported to the customer within Checkout immediately. Give it a try by using the test card `4000 0000 0000 0002` instead. 
+
+[Back to Checkout](/checkout)
