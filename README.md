@@ -209,3 +209,7 @@ Since Checkout requires customers to enter their email address, name and full bi
 ## Shipping Address
 
 If you've enabled the option, Checkout will ask a customer to enter a shipping address. This is also collected and then passed to Stripe as metadata, which makes it viewable from the relevant charge in the Stripe dashboard.
+
+## Author
+
+SCK created by [Jordan Merrick](http://www.jordanmerrick.com). Contact me at [info@jordanmerrick.com](mailto:info@jordanmerrick.com).
