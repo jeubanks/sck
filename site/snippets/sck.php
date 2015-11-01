@@ -22,7 +22,7 @@
 	
 	s::set(array(
 			'stripeAmount' 			=> (int)$amount,
-			'displayAmount' 		=> (int)$displayamount,
+			'displayAmount' 		=> (int)$displayAmount,
 			'stripeDescription'     => (string)$checkoutDescription
 		 ));
 
