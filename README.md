@@ -28,9 +28,9 @@ You can see a live demo of SCK with a Stripe Checkout form over at [jordanmerric
 
 SCK has been developed and tested using Kirby 2.1.1 running on PHP 5.5.27. With that, as long as you can run Kirby 2.1+ then you should be able to use this plugin. 
 
-SSL/TLS is **highly** [recommended by Stripe](https://stripe.com/docs/checkout#https):
+SSL/TLS is [required by Stripe](https://stripe.com/docs/checkout#https):
 
->All submissions of payment info using Checkout are made via a secure HTTPS connection. However, in order to protect yourself from certain forms of man-in-the-middle attacks, we suggest that you also serve the page containing the payment form with HTTPS as well. This means that any page that a Checkout form may exist on should start with https:// rather than just http://.
+> All submissions of payment info using Checkout are made via a secure HTTPS connection. However, in order to protect yourself from certain forms of man-in-the-middle attacks, you must serve the page containing the payment form with HTTPS as well. This means that any page that a Checkout form may exist on should start with https:// rather than just http://.
  
 Stripe has a [useful guide for setting this up](https://stripe.com/help/ssl) on their support site.
 
