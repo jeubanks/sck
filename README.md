@@ -1,38 +1,34 @@
 # SCK (Stripe Checkout for Kirby)
 
-A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout). You can also accept [AliPay](https://support.stripe.com/questions/how-does-stripe-s-alipay-integration-work) and [Bitcoin](https://support.stripe.com/questions/can-i-accept-bitcoin-with-stripe) payments, if your Stripe account supports it. 
+A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout). You can also accept [AliPay](https://stripe.com/docs/alipay) and [Bitcoin](https://stripe.com/docs/bitcoin) payments, if your Stripe account supports it.
 
 ## Features
 
-- Includes everything needed to add Checkout to any page and begin processing payments with Stripe.
-- Works on both desktop and mobile. 
-- Checkout integration is easy with just the addition of a snippet and a template.
-- Makes use of Checkout's vast array of features and functionality.  
+- Includes everything needed to add Checkout to any page and begin processing payments with Stripe
+- Works on both desktop and mobile
+- Checkout integration is easy with just the addition of a snippet and a template
+- Makes use of Checkout's vast array of features and functionality
 - Supports alternative payment methods, such as Bitcoin and AliPay, in addition to most major credit/debit cards (if your Stripe account supports it)
-- Supports Stripe's email receipt feature, so customers will receive an email confirmation of their purchase.
-- All billing and email information is passed to Stripe when creating the charge.
-- Option to collect shipping address information, which is then passed as metadata to Stripe and viewable within your Stripe dashboard.
-- Supports both decimal mark types: decimal point or decimal comma (e.g. $999.99 or €999,99). 
+- Supports Stripe's [email receipts](https://support.stripe.com/questions/email-receipts) feature, so customers will receive an email confirmation of their purchase
+- All billing and email information is passed to Stripe when creating the charge
+- Option to collect shipping address information, which is then passed as metadata to Stripe and viewable within your Stripe dashboard
+- Supports both decimal mark types: decimal point or decimal comma (e.g. $999.99 or €999,99)
 - Supports both left or right-positioned currency symbols (e.g. $999.99 or 999,99 kr)
-- All configuration settings are integrated into Kirby's `config.php` file, making them easy to find and build upon if you want to extend the plugin's functionality.
+- All configuration settings are integrated into Kirby's `config.php` file, making them easy to find and build upon if you want to extend the plugin's functionality
 
 You can read about all of Stripe Checkout's features over at [Stripe's Checkout documentation](https://stripe.com/docs/checkout).
 
-You can see a live demo of SCK with a Stripe Checkout form over at [jordanmerrick.com](http://www.jordanmerrick.com/checkout).
+You can see a live demo of SCK with a Stripe Checkout form over at Workflow Directory [jordanmerrick.com](https://workflow.directory).
 
 ## Requirements
 
-- Kirby 2.1+
-- PHP 5.3+
+- Kirby 2.3+
+- PHP 5.5+
 - Stripe PHP library
 
-SCK has been developed and tested using Kirby 2.1.1 running on PHP 5.5.27. With that, as long as you can run Kirby 2.1+ then you should be able to use this plugin. 
+SCK has been developed and tested using Kirby 2.3.1 running on PHP 5.5.27. With that, as long as you can run Kirby 2.3+ then you should be able to use this plugin. 
 
-SSL/TLS is [required by Stripe](https://stripe.com/docs/checkout#https):
-
-> All submissions of payment info using Checkout are made via a secure HTTPS connection. However, in order to protect yourself from certain forms of man-in-the-middle attacks, you must serve the page containing the payment form with HTTPS as well. This means that any page that a Checkout form may exist on should start with https:// rather than just http://.
- 
-Stripe has a [useful guide for setting this up](https://stripe.com/help/ssl) on their support site.
+SSL/TLS is [required by Stripe](https://stripe.com/docs/checkout#https) when processing live credit card payments. Stripe has a [useful guide for setting this up](https://stripe.com/docs/security) in their documentation.
 
 ## Installation
 
@@ -41,13 +37,19 @@ Stripe has a [useful guide for setting this up](https://stripe.com/help/ssl) on 
 3. Edit `/site/config/config.php` and insert `include 'sck.config.php';` after any listed options so Kirby will load the configuration file.
 4. Edit `/site/config/sck.config.php`, insert your Stripe API keys and change any options as needed.
 
-### Setting up the Template
+### Upgrading from previous versions
+
+The only file that should be modified is `sck.config.php`, which contains your SCK settings. When upgrading, replace all other plugin files except this one. Should there be any new options added to SCK, simply add them to your existing `sck.config.php` file. 
+
+If you have modified any other plugin files, you will need to ensure your changes are made to the updated plugin files. 
+
+### Setting up the template
 
 At the very least, you need to have `<?php snippet('sck') ?>` somewhere in the page template you're going to be using. Use the included `checkout.php` for info on how you can adapt or use it (comments are included), or even just modify it to fit.
 
 ## Usage
 
-To use SCK in any page, it will need three additional fields.
+To use SCK in any page, three additional fields need to be added.
 
 ### Stripe
 
@@ -63,7 +65,7 @@ The currency is set within SCK's options in the `config.php` file.
 
 This is used both as the description in the Checkout form and also the description of the charge when you view it in the Stripe dashboard. 
 
-### Example Page
+## Example page
 
 ````
 Title: Stripe Checkout Example
@@ -78,7 +80,7 @@ Description: An example purchase with SCK
 Text: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
 ````
 
-## Test Mode vs Live Mode
+## Test vs live
 
 Stripe provides two sets of API keys: test and live. Whether you process charges in test or live mode is dictated by the set of API keys used when inserting the Checkout form and creating a charge. 
 
@@ -106,7 +108,7 @@ Make sure to add `include 'sck.config.php` somewhere within Kirby's main configu
 
 For additional help, here's a list of all required options.
 
-### API Keys
+### API keys
 
 By default, test mode is enabled. When you're ready to begin processing live charges, change this to `false`. No payments can be made when test mode is enabled. 
 
@@ -118,7 +120,7 @@ c::set('stripe_live_secret_key', 'sk_live');
 c::set('stripe_live_publishable_key', 'pk_live');
 ````
 
-### Currency
+### Currency support
 
 Stripe has a [list of all supported currencies](https://support.stripe.com/questions/which-currencies-does-stripe-support), including their abbreviation. Refer to this when you're specifying a currency. 
 
@@ -138,7 +140,7 @@ c::set('stripe_currency_symbol_location', 'left');
 c::set('stripe_remember_me', true);
 ````
 
-### Shipping Address
+### Shipping address
 
 You can also have Checkout collect shipping address details. SCK will pass this information along as metadata when creating the charge, so you can view it within the Stripe dashboard. 
 
@@ -146,7 +148,16 @@ You can also have Checkout collect shipping address details. SCK will pass this 
 c::set('stripe_shipping_address', false);
 ````
 
-### Checkout Image
+### Default amount and description
+
+By default, SCK uses the amount and description specified on each page. If no amount or description has been set on a page that Checkout is being displayed on, the following default information is used instead. This is useful if you want to display Checkout on all pages with only one amount (e.g., a fixed donation). 
+
+````
+c::set('stripe_default_amount', '100');
+c::set('stripe_default_description', 'New Payment');
+````
+
+### Checkout image
 
 Custom icon for Checkout. Default is false, though it's recommended that you specify one. Icon should be at least 128x128px and .gif, .jpeg, .png or .svg. 
 
@@ -169,7 +180,7 @@ c::set('stripe_alipay', false);
 c::set('stripe_bitcoin', false);
 ````
 
-### Charge Confirmation
+### Charge confirmation
 
 When the charge process completes, the page will reload and the "Pay with Card" button will be replaced with a confirmation message consisting of a header and paragraph. You can specify what these say in the below parameters. 
 
@@ -178,7 +189,7 @@ c::set('stripe_confirmation_heading', '<h3>Purchase Complete</h3>');
 c::set('stripe_confirmation_message', '<p>Thank you for your purchase! You\'ll receive an email receipt shortly.</p>');
 ````
 
-### Redirect on Successful Charge
+### Redirect on successful charge
 
 If you'd prefer that the charge process redirects to a specific page once completed, enable the `stripe_redirect_on_success` parameter and specify the page to redirect to. A custom route is used (which uses whatever you specify `stripe_redirect_to_url` to be) if you'd also like to perform some additional actions.
 
@@ -202,14 +213,10 @@ c::set('routes', array(
 ));
 ````
 
-## Charge Information and Metadata
+## Charge information and metadata
 
-Since Checkout requires customers to enter their email address, name and full billing address, this is automatically passed to Stripe when a charge is created. In addition, SCK will pass as much information as possible to Stripe. 
-
-## Shipping Address
-
-If you've enabled the option, Checkout will ask a customer to enter a shipping address. This is also collected and then passed to Stripe as metadata, which makes it viewable from the relevant charge in the Stripe dashboard.
+Since Checkout requires customers to enter their email address, name and full billing address, this is automatically passed to Stripe when a charge is created. In addition, SCK will pass as much information as possible to Stripe.
 
 ## Author
 
-SCK created by [Jordan Merrick](http://www.jordanmerrick.com). Contact me at [info@jordanmerrick.com](mailto:info@jordanmerrick.com).
+SCK created by [Jordan Merrick](https://www.jordanmerrick.com). Contact me at [info@jordanmerrick.com](mailto:info@jordanmerrick.com).

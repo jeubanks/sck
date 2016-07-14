@@ -2,8 +2,7 @@
   require_once('sck.inc.php');
 
   /* 
-  Setting variables using POST and session data to create the charge and pass
-  to Stripe to process.
+  Setting variables using POST and session data to create the charge and pass to Stripe to process.
   */
 
   $token                            = $_POST['stripeToken'];
