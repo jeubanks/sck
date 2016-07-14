@@ -1,5 +1,5 @@
 <?php 
-	function stripeCheckout() {
-		require_once('sck.charge.php');
-	} 
+  function stripeCheckout() {
+    require_once('sck.charge.php');
+  } 
 ?>
