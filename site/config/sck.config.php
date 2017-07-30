@@ -62,20 +62,6 @@ c::set('stripe_shipping_address', false);
 c::set('stripe_icon', true);
 c::set('stripe_icon_location', 'assets/images/logo.svg');
 
-/* 
-
-Stripe supports Alipay and Bitcoin payments through Checkout, but there are some restrictions. 
-
-More information can be found at:
-
-- https://stripe.com/bitcoin
-- https://stripe.com/alipay
-
-*/
-
-c::set('stripe_alipay', false);
-c::set('stripe_bitcoin', false);
-
 // When the charge process completes, the page will reload and the "Pay with Card" button will be replaced with a confirmation message consisting of a header and paragraph. You can specify what these say in the below parameters. 
 
 c::set('stripe_confirmation_heading', '<h3>Purchase Complete</h3>');

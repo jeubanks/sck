@@ -1,6 +1,6 @@
 # SCK (Stripe Checkout for Kirby)
 
-A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout). You can also accept [AliPay](https://stripe.com/docs/alipay) and [Bitcoin](https://stripe.com/docs/bitcoin) payments, if your Stripe account supports it.
+A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout).
 
 ## Features
 
@@ -8,7 +8,6 @@ A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) us
 - Works on both desktop and mobile
 - Checkout integration is easy with just the addition of a snippet and a template
 - Makes use of Checkout's vast array of features and functionality
-- Supports alternative payment methods, such as Bitcoin and AliPay, in addition to most major credit/debit cards (if your Stripe account supports it)
 - Supports Stripe's [email receipts](https://support.stripe.com/questions/email-receipts) feature, so customers will receive an email confirmation of their purchase
 - All billing and email information is passed to Stripe when creating the charge
 - Option to collect shipping address information, which is then passed as metadata to Stripe and viewable within your Stripe dashboard
@@ -17,8 +16,6 @@ A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) us
 - All configuration settings are integrated into Kirby's `config.php` file, making them easy to find and build upon if you want to extend the plugin's functionality
 
 You can read about all of Stripe Checkout's features over at [Stripe's Checkout documentation](https://stripe.com/docs/checkout).
-
-You can see a live demo of SCK with a Stripe Checkout form over at Workflow Directory [jordanmerrick.com](https://workflow.directory).
 
 ## Requirements
 
@@ -164,20 +161,6 @@ Custom icon for Checkout. Default is false, though it's recommended that you spe
 ````
 c::set('stripe_icon', true);
 c::set('stripe_icon_location', 'assets/images/logo.svg');
-````
-
-### AliPay & Bitcoin 
-
-Stripe supports [AliPay](https://stripe.com/alipay) and [Bitcoin](https://stripe.com/bitcoin) payments through Checkout, but there are some restrictions. To use AliPay, you must have a USD-denominated bank account associated with your Stripe account. 
-
-To use Bitcoin, you must have a US-based bank account associated 
-with your Stripe account. 
-
-If you do not meet this criteria, do not enable either of these options. 
-
-````
-c::set('stripe_alipay', false);
-c::set('stripe_bitcoin', false);
 ````
 
 ### Charge confirmation

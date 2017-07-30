@@ -1,3 +1,6 @@
+## 2017-07-30 (v0.4)
+- Removed Alipay and Bitcoin support (these payment methods are no longer supported in Checkout)
+
 ## 2016-07-14 (v0.3)
 - Add option for default charge amount and description
 - General formatting improvements to comments and tab spacing within plugin files

@@ -30,18 +30,6 @@
       'stripeDescription' => (string)$checkoutDescription
      ));
 
-  // Check if the Alipay payment method has been enabled
-
-  if (c::get('stripe_alipay')) {
-    $alipay = 'data-alipay="true"';
-  }
-
-  // Check if the Bitcoin payment method has been enabled
-
-  if (c::get('stripe_bitcoin')) {
-    $bitcoin = 'data-bitcoin="true"';
-  }
-
   // Check if an icon has been set. 
 
   if (c::get('stripe_icon')) {
@@ -80,8 +68,6 @@
   data-billing-address="true"
   <?php echo $shippingAddress; ?>
   <?php echo $rememberMe; ?>
-  <?php echo $alipay; ?>
-  <?php echo $bitcoin; ?>
   data-currency="<?php echo $currency; ?>">
   </script>
 </form>
