@@ -1,5 +1,5 @@
 ## 2017-07-30 (v0.4)
-- Removed Alipay and Bitcoin support (these payment methods are no longer supported in Checkout)
+- Removed Alipay and Bitcoin support
 
 ## 2016-07-14 (v0.3)
 - Add option for default charge amount and description
