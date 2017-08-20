@@ -26,7 +26,6 @@
 
   s::set(array(
       'stripeAmount' => (int)$amount,
-      'displayAmount' => (int)$displayAmount,
       'stripeDescription' => (string)$checkoutDescription
      ));
 
@@ -34,18 +33,24 @@
 
   if (c::get('stripe_icon')) {
     $logo = url(c::get('stripe_icon_location'));
+  } else {
+    $logo = '';
   }
 
   // Check if "Remember Me" has been enabled
 
-  if (!c::get('stripe_remember_me')) {
-    $rememberMe = 'data-allow-remember-me="false"';
+  if (c::get('stripe_remember_me')) {
+    $rememberMe = 'true';
+  } else {
+    $rememberMe = 'false';
   }
 
   // Check if the option to collect a shipping address has been enabled
 
   if (c::get('stripe_shipping_address')) {
-    $shippingAddress = 'data-shipping-address="true"';
+    $shippingAddress = 'true';
+  } else {
+    $shippingAddress = 'false';
   }
 
   // Process the charge
@@ -59,15 +64,15 @@
 
 <form action="#" method="POST">
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<?php echo $pk ?>"
-  data-amount="<?php echo $amount ?>"
-  data-name="<?php echo $checkoutName ?>"
-  data-description="<?php echo $checkoutDescription ?>"
-  data-image="<?php echo $logo ?>"
+  data-key="<?php echo $pk; ?>"
+  data-amount="<?php echo $amount; ?>"
+  data-name="<?php echo $checkoutName; ?>"
+  data-description="<?php echo $checkoutDescription; ?>"
+  data-image="<?php echo $logo; ?>"
   data-locale="auto"
   data-billing-address="true"
-  <?php echo $shippingAddress; ?>
-  <?php echo $rememberMe; ?>
+  data-shipping-address="<?php echo $shippingAddress; ?>"
+  data-allow-remember-me="<?php echo $rememberMe; ?>"
   data-currency="<?php echo $currency; ?>">
   </script>
 </form>

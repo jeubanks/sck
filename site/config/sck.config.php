@@ -40,13 +40,13 @@ c::set('stripe_currency_symbol_location', 'left');
 
 /*
 
-"Remember Me" allows customers to save their card details wth Stripe to use again with any merchant that uses Checkout.
+"Remember Me" allows customers to save their card details with Stripe to use again with any merchant that uses Checkout.
 
 - https://stripe.com/checkout#onetap
 
 */ 
 
-c::set('stripe_remember_me', true);
+c::set('stripe_remember_me', false);
 
 // By default, SCK uses the amount and description specified on each page. If no amount or description has been set on a page that Checkout is being displayed on, the following default information is used instead. This is useful if you want to use SCK for donation purposes, where you'd only want to use one amount anyway. 
 
@@ -59,7 +59,7 @@ c::set('stripe_shipping_address', false);
 
 // Custom icon for Checkout. Default is false, though it's recommended that you specify one. Icon should be at least 128x128px and .gif, .jpeg, .png or .svg. 
 
-c::set('stripe_icon', true);
+c::set('stripe_icon', false);
 c::set('stripe_icon_location', 'assets/images/logo.svg');
 
 // When the charge process completes, the page will reload and the "Pay with Card" button will be replaced with a confirmation message consisting of a header and paragraph. You can specify what these say in the below parameters. 
