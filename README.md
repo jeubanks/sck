@@ -1,6 +1,6 @@
 # SCK (Stripe Checkout for Kirby)
 
-A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) using [Checkout](https://stripe.com/checkout).
+A plug-in for Kirby CMS to process payments with [Stripe Checkout](https://stripe.com/checkout).
 
 ## Features
 
@@ -8,9 +8,9 @@ A plug-in for Kirby CMS to process payments with [Stripe](https://stripe.com) us
 - Works on both desktop and mobile
 - Checkout integration is easy with just the addition of a snippet and a template
 - Makes use of Checkout's vast array of features and functionality
-- Supports Stripe's [email receipts](https://support.stripe.com/questions/email-receipts) feature, so customers will receive an email confirmation of their purchase
+- Supports Stripe's [email receipts](https://stripe.com/docs/checkout) feature, so customers will receive an email confirmation of their purchase
 - All billing and email information is passed to Stripe when creating the charge
-- Option to collect shipping address information, which is then passed as metadata to Stripe and viewable within your Stripe dashboard
+- Option to collect shipping address information, which is then passed as metadata to Stripe and viewable within your Stripe Dashboard
 - Supports both decimal mark types: decimal point or decimal comma (e.g. $999.99 or €999,99)
 - Supports both left or right-positioned currency symbols (e.g. $999.99 or 999,99 kr)
 - All configuration settings are integrated into Kirby's `config.php` file, making them easy to find and build upon if you want to extend the plugin's functionality
@@ -25,14 +25,14 @@ You can read about all of Stripe Checkout's features over at [Stripe's Checkout 
 
 SCK has been developed and tested using Kirby 2.3.1 running on PHP 5.5.27. With that, as long as you can run Kirby 2.3+ then you should be able to use this plugin. 
 
-SSL/TLS is [required by Stripe](https://stripe.com/docs/checkout#https) when processing live credit card payments. Stripe has a [useful guide for setting this up](https://stripe.com/docs/security) in their documentation.
+SSL/TLS is [required by Stripe](https://stripe.com/docs/security) when processing live credit card payments.
 
 ## Installation
 
 1. Copy the included files to the appropriate folders. 
 2. Download the [Stripe PHP library](https://github.com/stripe/stripe-php/releases), rename the extracted folder to `stripe-php` and copy it to `/site/plugins/sck`.  
 3. Edit `/site/config/config.php` and insert `include 'sck.config.php';` after any listed options so Kirby will load the configuration file.
-4. Edit `/site/config/sck.config.php`, insert your Stripe API keys and change any options as needed.
+4. Edit `/site/config/sck.config.php`, insert your Stripe API keys, and change any options as needed.
 
 ### Upgrading from previous versions
 
@@ -42,25 +42,15 @@ If you have modified any other plugin files, you will need to ensure your change
 
 ### Setting up the template
 
-At the very least, you need to have `<?php snippet('sck') ?>` somewhere in the page template you're going to be using. Use the included `checkout.php` for info on how you can adapt or use it (comments are included), or even just modify it to fit.
+At the very least, you need to have `<?php snippet('sck') ?>` somewhere in the page template you're going to be using. Use the included `checkout.php` template for info on how you can adapt or use it (comments are included), or even just modify it to fit.
 
 ## Usage
 
 To use SCK in any page, three additional fields need to be added.
 
-### Stripe
-
-`Stripe: true` will make sure that Checkout is inserted into the page. 
-
-### Amount
-
-`Amount: 10.00` will set the amount to charge your customer and display in the Checkout form. If you use a decimal comma, you can enter 10,00. For larger amounts, you can include a number divider (e.g. 2,999.99) if you wish.  
-
-The currency is set within SCK's options in the `config.php` file. 
-
-### Description
-
-This is used both as the description in the Checkout form and also the description of the charge when you view it in the Stripe dashboard. 
+- `Stripe: true` will make sure that Checkout is inserted into the page. 
+- `Amount: 10.00` will set the amount to charge your customer and display in the Checkout form. If you use a decimal comma, you can enter 10,00. For larger amounts, you can include a number divider (e.g. 2,999.99) if you wish. The currency is set within SCK's options in the `config.php` file. 
+- `Description` is used both as the description in the Checkout form and also the description of the charge when you view it in the Stripe dashboard. 
 
 ## Example page
 
@@ -83,7 +73,7 @@ Stripe provides two sets of API keys: test and live. Whether you process charges
 
 SCK requires both sets and makes it easy to switch between test and live mode. By default, test mode is enabled. It's recommended that you fully test SCK before you begin processing live charges. 
 
-The Stripe dashboard will display both live and test charges in separate views, which you can toggle using the Live / Test switch in the dashboard. Alternatively, you can jump straight to your Stripe "test" dashboard at:
+The Stripe Dashboard will display both live and test charges in separate views, which you can toggle using the Live / Test switch in the Dashboard. Alternatively, you can jump straight to your Stripe "test" Dashboard at:
 
 https://dashboard.stripe.com/test/dashboard
 
@@ -91,19 +81,15 @@ Once you're happy that everything is set up how you want it, you should change t
 
 ### Testing SCK
 
-Stripe has some useful information about [testing](https://stripe.com/docs/testing), and provides a number of [test credit card numbers](https://stripe.com/docs/testing#cards) you can use.
-
-For example, use the card number `4242 4242 4242 4242` with any future expiration date and random number for the CVC to create a successful charge.  
+Stripe has some useful information about [testing](https://stripe.com/docs/testing), and provides a number of [test credit card numbers](https://stripe.com/docs/testing#cards) you can use. For example, use the card number `4242 4242 4242 4242` with any future expiration date and random number for the CVC to create a successful charge.
 
 ## Options
 
-SCK has a lot of options that allow you to customise Checkout to suit your needs. 
+SCK has a lot of options that allow you to customize Checkout to suit your needs. 
 
 All options are set in the included `sck.config.php`, which should be placed in `/site/config` folder. Make sure to add `include 'sck.config.php'` in `/site/config/config.php` so that Kirby will be able to use them. The configuration file is fully commented so you can easily identify what each option does. 
 
-Make sure to add `include 'sck.config.php` somewhere within Kirby's main configuration file at `/site/config.config.php` so it will load them.  
-
-For additional help, here's a list of all required options.
+Make sure to add `include 'sck.config.php` somewhere within Kirby's main configuration file at `/site/config.config.php` so it will load them.
 
 ### API keys
 
@@ -203,3 +189,7 @@ Since Checkout requires customers to enter their email address, name and full bi
 ## Author
 
 SCK created by [Jordan Merrick](https://www.jordanmerrick.com). Contact me at [info@jordanmerrick.com](mailto:info@jordanmerrick.com).
+
+## Disclaimer
+
+SCK is provided "as-is". There is no support provided, nor do I accept any responsibility for your use of SCK nor any issues that may occur.

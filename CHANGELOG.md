@@ -1,3 +1,6 @@
+## 2017-08-20 (v0.5)
+- Bug fixes and improvements
+
 ## 2017-07-30 (v0.4)
 - Removed Alipay and Bitcoin support
 
